@@ -12,12 +12,17 @@
           extend: {
             animation: {
               'fade-in': 'fadeIn 0.5s ease-in-out',
+              'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
             },
             keyframes: {
               fadeIn: {
                 '0%': { opacity: 0 },
                 '100%': { opacity: 1 },
               },
+              pulseGlow: {
+                  '0%, 100%': { borderColor: 'rgba(255, 255, 255, 0.4)' },
+                  '50%': { borderColor: 'rgba(255, 255, 255, 1)' }
+              }
             }
           }
         }

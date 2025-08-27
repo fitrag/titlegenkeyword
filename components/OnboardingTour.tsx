@@ -113,14 +113,15 @@ export const OnboardingTour: React.FC<{ onClose: () => void }> = ({ onClose }) =
 
     return (
         <div className="fixed inset-0 z-50 animate-fade-in" role="dialog" aria-modal="true">
-            {/* Backdrop */}
-            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose}></div>
+            {/* Clickable overlay to close the tour */}
+            <div className="fixed inset-0 bg-transparent" onClick={onClose}></div>
 
-            {/* Highlighter */}
+            {/* Highlighter with glowing border and shadow backdrop */}
             {targetRect && (
-                 <div
-                    className="fixed rounded-lg transition-all duration-300 ease-in-out shadow-[0_0_0_9999px_rgba(0,0,0,0.6)] shadow-black/60"
+                <div
+                    className="fixed rounded-lg transition-all duration-300 ease-in-out pointer-events-none border-2 animate-pulse-glow shadow-[0_0_0_9999px_rgba(0,0,0,0.75)]"
                     style={{
+                        borderColor: 'rgba(255, 255, 255, 0.4)', // Start color for animation
                         top: targetRect.top - 8,
                         left: targetRect.left - 8,
                         width: targetRect.width + 16,
