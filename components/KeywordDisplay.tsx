@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Copy, Check } from 'lucide-react';
-import { KeywordGroup } from '../pages/GeneratorPage';
 import { useI18n } from '../hooks/useI18n';
+
+export interface KeywordGroup {
+    title: string;
+    keywords: string[];
+}
 
 interface KeywordDisplayProps {
     groups: KeywordGroup[];

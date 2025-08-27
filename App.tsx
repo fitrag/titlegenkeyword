@@ -6,6 +6,7 @@ import { GeneratorPage } from './pages/GeneratorPage';
 
 const App: React.FC = () => {
     const [route, setRoute] = useState(window.location.hash);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     useEffect(() => {
         const handleHashChange = () => {
@@ -24,10 +25,12 @@ const App: React.FC = () => {
         };
     }, []);
 
+    const isGeneratorPage = route === '#/generator';
+
     const renderPage = () => {
         switch (route) {
             case '#/generator':
-                return <GeneratorPage />;
+                return <GeneratorPage isSidebarOpen={isSidebarOpen} closeSidebar={() => setIsSidebarOpen(false)} />;
             case '#/':
             default:
                 return <LandingPage />;
@@ -36,11 +39,15 @@ const App: React.FC = () => {
 
     return (
         <div className="flex flex-col min-h-screen bg-gray-50 font-sans">
-            <Header />
-            <main className="flex-grow container mx-auto px-4 py-8 sm:py-12">
+            <Header 
+                isSidebarOpen={isSidebarOpen} 
+                setIsSidebarOpen={setIsSidebarOpen}
+                showMenuButton={isGeneratorPage}
+            />
+            <main className="flex-grow">
                 {renderPage()}
             </main>
-            <Footer />
+            {isGeneratorPage ? null : <Footer />}
         </div>
     );
 };

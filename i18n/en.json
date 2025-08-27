@@ -1,6 +1,8 @@
 {
     "header": {
-        "getStarted": "Get Started"
+        "getStarted": "Get Started",
+        "getStartedTooltip": "Go to Generator",
+        "switchLanguageTooltip": "Switch Language"
     },
     "footer": {
         "copyright": "© {year} Keyword AI. All Rights Reserved.",
@@ -40,12 +42,20 @@
         "prev": "Previous step",
         "close": "Close tour"
     },
+    "sidebar": {
+        "generator": "Generator",
+        "history": "History",
+        "settings": "Settings",
+        "openMenu": "Open menu",
+        "closeMenu": "Close menu"
+    },
     "generator": {
         "title": "Keyword Generator",
         "subtitle": "Let our AI do the heavy lifting.",
         "errorNoTitle": "Please enter at least one title to generate keywords.",
         "errorInvalidCount": "Please enter a keyword count between 5 and 50.",
-        "errorFailed": "Failed to generate keywords. Please try again later."
+        "errorFailed": "Failed to generate keywords. Please try again later.",
+        "errorNoApiKey": "Gemini API key is not set. Please add it in the Settings tab."
     },
     "keywordInput": {
         "label": "Titles",
@@ -60,5 +70,50 @@
         "copyButton": "Copy",
         "copiedButton": "Copied!",
         "copyAllButton": "Copy All Keywords"
+    },
+    "history": {
+        "title": "Generation History",
+        "clearAllButton": "Clear All",
+        "viewButton": "View",
+        "viewButtonTooltip": "View these keywords",
+        "deleteButtonTooltip": "Delete this entry",
+        "confirmClearAllTitle": "Are you sure?",
+        "confirmClearAllText": "This will permanently delete your entire generation history!",
+        "confirmDeleteItemTitle": "Delete this entry?",
+        "confirmDeleteItemText": "You won't be able to revert this!",
+        "confirmDeleteButton": "Yes, delete it!",
+        "cancelButton": "Cancel",
+        "modalTitle": "History Details",
+        "useInGeneratorButton": "Use in Generator",
+        "metaTitle": "title",
+        "metaTitles": "titles",
+        "metaKeyword": "keyword",
+        "metaKeywords": "keywords"
+    },
+    "settings": {
+        "title": "Settings",
+        "description": "Configure your application preferences and API settings here.",
+        "apiKeyLabel": "Gemini API Key",
+        "apiKeyDescription": "Your API key is stored locally in your browser and is never sent to our servers.",
+        "apiKeyPlaceholder": "Enter your Gemini API key",
+        "apiKeySaveButton": "Save",
+        "apiKeySaved": "Saved!",
+        "securityWarningTitle": "Security Notice",
+        "securityWarning": "Storing your API key in the browser is not recommended for production applications. For personal use, ensure you understand the risks and protect your key.",
+        "apiKeyHistoryTitle": "API Key History",
+        "apiKeyHistoryDescription": "Recently used keys are stored here for your convenience. The active key is used for generating keywords.",
+        "lastUsedLabel": "Last Used",
+        "activeKeyLabel": "Active",
+        "useKeyButton": "Use",
+        "deleteApiKeyTooltip": "Delete this key from history",
+        "confirmDeleteApiKeyTitle": "Delete this API key?",
+        "confirmDeleteApiKeyText": "The key will be removed from your history, but will remain active if it is the current key.",
+        "clearApiHistoryButton": "Clear History",
+        "confirmClearApiHistoryTitle": "Clear API key history?",
+        "confirmClearApiHistoryText": "This will not delete the currently active key.",
+        "noApiHistory": "No previously used API keys found."
+    },
+    "modal": {
+        "close": "Close"
     }
 }

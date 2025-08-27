@@ -1,36 +1,32 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 
-if (!process.env.API_KEY) {
-    throw new Error("API_KEY environment variable not set");
-}
+export const generateKeywords = async (title: string, count: number, apiKey: string): Promise<string[]> => {
+    if (!apiKey) {
+        throw new Error("API_KEY is missing.");
+    }
+    
+    const ai = new GoogleGenAI({ apiKey });
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
-export const generateKeywords = async (title: string, count: number): Promise<string[]> => {
     const prompt = `Based on the following title for a microstock image/vector, generate exactly ${count} SEO-friendly and highly searchable single-word keywords in English. These keywords will be used for metadata on platforms like Adobe Stock, Vecteezy, and Freepik. The keywords should be relevant, specific, and cover concepts, themes, and objects related to the title. Each keyword in the list must be a single word.
 
 Title: "${title}"
 
-Provide the output as a JSON array of ${count} single-word strings.`;
+Provide the output as a valid JSON array of ${count} single-word strings, and nothing else.`;
 
     try {
         const response = await ai.models.generateContent({
             model: "gemini-2.5-flash",
             contents: prompt,
             config: {
-                responseMimeType: "application/json",
-                responseSchema: {
-                    type: Type.ARRAY,
-                    items: {
-                        type: Type.STRING,
-                    },
-                },
                 temperature: 0.7,
                 topP: 0.9,
             },
         });
 
-        const jsonString = response.text.trim();
+        const responseText = response.text.trim();
+        // The response might be wrapped in markdown backticks for JSON, so we strip them.
+        const jsonString = responseText.replace(/^```json\s*/, '').replace(/```$/, '');
+        
         const keywords = JSON.parse(jsonString);
 
         if (Array.isArray(keywords) && keywords.every(k => typeof k === 'string')) {
