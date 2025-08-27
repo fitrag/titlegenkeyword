@@ -1,0 +1,5 @@
+{
+  "name": "Microstock Keyword Generator",
+  "description": "An AI-powered web application to generate 45 SEO-friendly and highly-searched English keywords from a title, specifically for microstock platforms like Adobe Stock, Vecteezy, and Freepik.",
+  "requestFramePermissions": []
+}
